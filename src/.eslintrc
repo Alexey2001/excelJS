@@ -14,7 +14,8 @@
     "require-jsdoc": "off",
     "eol-last": "off",
     "quotes": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "max-len": "off"
   },
   "extends": [
     "eslint:recommended", "google"

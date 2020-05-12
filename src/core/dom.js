@@ -1,10 +1,10 @@
 class Dom {
     constructor(selector) {
         // #app
-       this.$el = typeof selector === 'string'
-// если строка то делаем  document.querySelector
-           ? document.querySelector(selector)
-           : selector
+        this.$el = typeof selector === 'string'
+            // если строка то делаем  document.querySelector
+            ? document.querySelector(selector)
+            : selector
 // если дом нода то просто присваиваем селектор в this.$el
     }
 
@@ -17,14 +17,15 @@ class Dom {
     }
 
     clear() {
-    this.html('')
+        this.html('')
         return this
     }
 
     on(eventType, callback) {
         // этот объект мы не будем инициализировать и пишем по этой причине так
-    this.$el.addEventListener(eventType, callback)
+        this.$el.addEventListener(eventType, callback)
     }
+
     // eventType - input click mouseDown mouseMove
 
     off(eventType, callback) {
@@ -43,6 +44,30 @@ class Dom {
             this.$el.appendChild(node)
         }
         return this
+    }
+
+    get data() {
+        return this.$el.dataset
+    }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    css(styles = {}) {
+        Object
+            .keys(styles)
+            .forEach(key => {
+            this.$el.style[key] = styles[key]
+        })
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
     }
 }
 
